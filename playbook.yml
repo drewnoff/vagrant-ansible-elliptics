@@ -1,0 +1,10 @@
+---
+# This Playbook would deploy the whole elliptics cluster
+
+- hosts: all
+  roles:
+    - role: common
+
+- hosts: elliptics_servers
+  roles:
+    - role: elliptics

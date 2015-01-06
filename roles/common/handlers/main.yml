@@ -1,0 +1,8 @@
+---
+#  Handlers for all hosts in elliptics or cocaine clusters
+
+- name: update apt cache
+  apt: update_cache=yes
+
+- name: reconfigure locales
+  command: dpkg-reconfigure locales

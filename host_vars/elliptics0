@@ -1,0 +1,6 @@
+
+node_address_ipv4: 192.168.7.12
+node_address_port: 1025
+node_monitor_port: 20000
+
+group: 1

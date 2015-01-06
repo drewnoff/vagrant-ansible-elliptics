@@ -1,0 +1,33 @@
+---
+# This Playbook runs all the elliptics server nodes plays in the deployment
+
+- name: install elliptics
+  apt: name={{ item }} state=latest
+  with_items:
+    - elliptics
+    - elliptics-client
+  
+- name: add elliptics user
+  user: name=elliptics group=adm system=yes createhome=no shell=/bin/false
+
+- name: elliptics dirs
+  file: path={{ item }} state=directory owner=elliptics group=adm
+  with_items:
+    - /opt/elliptics/history.1
+    - /opt/elliptics/eblob.1
+    - /opt/elliptics/eblob.1/data
+    - /etc/elliptics
+    - /var/log/elliptics
+
+- name: elliptics config
+  template: src={{ item + ".j2" }}
+            dest=/etc/elliptics/{{ item }}
+  with_items:
+    - node.conf
+  notify:
+    - restart elliptics
+
+- name: elliptics init
+  copy: src=init dest=/etc/init.d/elliptics mode=755
+  notify:
+    - restart elliptics

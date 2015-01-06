@@ -1,0 +1,5 @@
+---
+#  Handlers for all hosts in elliptics cluster
+
+- name: restart elliptics
+  service: name=elliptics enabled=yes state=restarted

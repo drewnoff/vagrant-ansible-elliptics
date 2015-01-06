@@ -1,0 +1,4 @@
+[elliptics_servers]
+elliptics0 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2230
+elliptics1 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2231
+elliptics2 ansible_ssh_host=127.0.0.1 ansible_ssh_port=2232
